@@ -9,3 +9,16 @@ C:\Users\Vatsal Jain\source\repos\AddressBook\ModalLayer\obj\Debug\net6.0\ModalL
 C:\Users\Vatsal Jain\source\repos\AddressBook\ModalLayer\obj\Debug\net6.0\refint\ModalLayer.dll
 C:\Users\Vatsal Jain\source\repos\AddressBook\ModalLayer\obj\Debug\net6.0\ModalLayer.pdb
 C:\Users\Vatsal Jain\source\repos\AddressBook\ModalLayer\obj\Debug\net6.0\ref\ModalLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModalLayer.deps.json
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModalLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModalLayer.pdb
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.csproj.AssemblyReference.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.AssemblyInfoInputs.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.AssemblyInfo.cs
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.csproj.CoreCompileInputs.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.sourcelink.json
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\refint\ModalLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModalLayer.pdb
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ref\ModalLayer.dll
