@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModalLayer.Modal
 {
-    public class AddressBookEntry
+    public class AddressBookEntryModel
     {
         public int Id { get; set; }
         public string Name { get; set; }

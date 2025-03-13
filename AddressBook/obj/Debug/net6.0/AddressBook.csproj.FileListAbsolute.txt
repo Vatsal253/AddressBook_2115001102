@@ -174,3 +174,8 @@ E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\refint\Addr
 E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\AddressBook.pdb
 E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\AddressBook.genruntimeconfig.cache
 E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\ref\AddressBook.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\AutoMapper.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
