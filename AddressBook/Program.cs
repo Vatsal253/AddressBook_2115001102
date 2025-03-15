@@ -1,53 +1,77 @@
-using FluentValidation.AspNetCore;
-using FluentValidation;
-using Microsoft.EntityFrameworkCore;
+using BusinessLayer.Interfaces;
+using BusinessLayer.Services;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using NLog;
 using NLog.Web;
+using AutoMapper;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using RepositoryLayer.Context;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
+using ModalLayer.Modal;
 
 var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
 try
 {
     logger.Info("Application is starting...");
+
     var builder = WebApplication.CreateBuilder(args);
-
-// Database Connection
-var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
-builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
-
-// Add services to the container.
-builder.Services.AddControllers();
+    var configuration = builder.Configuration;
+    // Clear default logging providers and use NLog
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+    // Add services to the container.
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+
+    // Enable CORS
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAll",
+            builder => builder.AllowAnyOrigin()
+                              .AllowAnyMethod()
+                              .AllowAnyHeader());
+    });
+
+    // Database Context
+    builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+
+    // Add Business Layer Services
+    builder.Services.AddScoped<IAddressBookBL, AddressBookBL>();
+
     // Add AutoMapper
- builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
     // Add FluentValidation
     builder.Services.AddFluentValidationAutoValidation();
-    builder.Services.AddValidatorsFromAssemblyContaining<AddressBookEntryModelValidator>(); // Ensure Validator is correctly registered
-
-
+    builder.Services.AddValidatorsFromAssemblyContaining<AddressBookEntryModel>();
+    builder.Services.AddAutoMapper(typeof(MappingProfile));
 
     var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseSwagger();
+        app.UseSwaggerUI();
+    }
 
-app.UseHttpsRedirection();
+    app.UseHttpsRedirection();
 
-app.UseAuthorization();
+    // Use CORS policy
+    app.UseCors("AllowAll");
 
-app.MapControllers();
-
-app.Run();
+    app.UseAuthorization();
+    app.MapControllers();
+    app.Run();
 }
 catch (Exception ex)
 {

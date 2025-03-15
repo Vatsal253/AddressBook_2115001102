@@ -24,17 +24,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             }
           }
@@ -87,17 +87,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/AddressBookEntryModel"
+                "$ref": "#/components/schemas/RequestModel"
               }
             }
           }
@@ -133,23 +133,28 @@
   },
   "components": {
     "schemas": {
-      "AddressBookEntryModel": {
+      "RequestModel": {
+        "required": [
+          "name",
+          "phoneNumber"
+        ],
         "type": "object",
         "properties": {
-          "id": {
-            "type": "integer",
-            "format": "int32"
-          },
           "name": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 100,
+            "minLength": 1,
+            "type": "string"
           },
           "phoneNumber": {
-            "type": "string",
-            "nullable": true
+            "maxLength": 15,
+            "minLength": 1,
+            "pattern": "^[0-9]{10}$",
+            "type": "string"
           },
           "email": {
+            "maxLength": 255,
             "type": "string",
+            "format": "email",
             "nullable": true
           },
           "address": {
