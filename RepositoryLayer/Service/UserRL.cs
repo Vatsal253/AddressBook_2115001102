@@ -44,5 +44,10 @@ namespace RepositoryLayer.Service
                 Console.WriteLine($"[AddUser] Error: {ex.Message}");
             }
         }
+        public void UpdateUser(UserEntity user)
+        {
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
     }
 }

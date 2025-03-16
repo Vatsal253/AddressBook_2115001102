@@ -14,6 +14,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using ModalLayer.Modal;
+using RepositoryLayer.Interface;
+using RepositoryLayer.Service;
+using BusinessLayer.Interface;
+using BusinessLayer.Service;
+using Middleware.Authenticator;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Middleware.Email;
 
 var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
 try
@@ -46,7 +55,11 @@ try
 
     // Add Business Layer Services
     builder.Services.AddScoped<IAddressBookBL, AddressBookBL>();
-
+    builder.Services.AddScoped<IAddressBookRL, AddressBookRL>();
+    builder.Services.AddScoped<IUserBL, UserBL>();
+    builder.Services.AddScoped<IUserRL, UserRL>();
+    builder.Services.AddScoped<JwtTokenService>();
+    builder.Services.AddScoped<EmailService>();
     // Add AutoMapper
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -54,6 +67,31 @@ try
     builder.Services.AddFluentValidationAutoValidation();
     builder.Services.AddValidatorsFromAssemblyContaining<AddressBookEntryModel>();
     builder.Services.AddAutoMapper(typeof(MappingProfile));
+    var jwtSettings = builder.Configuration.GetSection("Jwt");
+    var jwtKey = jwtSettings["Key"];
+
+    if (string.IsNullOrEmpty(jwtKey))
+    {
+        throw new Exception("JWT Key is missing in configuration");
+    }
+
+    var key = Encoding.UTF8.GetBytes(jwtKey);
+
+    builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options =>
+        {
+            options.TokenValidationParameters = new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(key),
+                ValidateIssuer = true,
+                ValidateAudience = true,
+                ValidIssuer = jwtSettings["Issuer"],
+                ValidAudience = jwtSettings["Audience"],
+                ValidateLifetime = true,
+                ClockSkew = TimeSpan.Zero
+            };
+        });
 
     var app = builder.Build();
 
