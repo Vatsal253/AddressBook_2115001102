@@ -63,6 +63,10 @@
               "target": "Package",
               "version": "[11.3.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -134,6 +138,9 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
+              "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj": {
+                "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj"
+              },
               "E:\\Address Clone\\AddressBook_2115001102\\RepositoryLayer\\RepositoryLayer.csproj": {
                 "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\RepositoryLayer\\RepositoryLayer.csproj"
               }
@@ -164,6 +171,10 @@
               "target": "Package",
               "version": "[11.3.0, )"
             },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            },
             "NLog": {
               "target": "Package",
               "version": "[5.4.0, )"
@@ -193,12 +204,88 @@
         }
       }
     },
-    "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModalLayer.csproj": {
+    "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\Middleware.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModalLayer.csproj",
-        "projectName": "ModalLayer",
-        "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModalLayer.csproj",
+        "projectUniqueName": "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\Middleware.csproj",
+        "projectName": "Middleware",
+        "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\Middleware.csproj",
+        "packagesPath": "C:\\Users\\Vatsal Jain\\.nuget\\packages\\",
+        "outputPath": "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Vatsal Jain\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {
+              "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj": {
+                "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.200"
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj",
+        "projectName": "ModelLayer",
+        "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj",
         "packagesPath": "C:\\Users\\Vatsal Jain\\.nuget\\packages\\",
         "outputPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\obj\\",
         "projectStyle": "PackageReference",
@@ -247,6 +334,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
             },
             "NLog": {
               "target": "Package",
@@ -306,8 +397,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModalLayer.csproj": {
-                "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModalLayer.csproj"
+              "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\Middleware.csproj": {
+                "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\Middleware\\Middleware.csproj"
+              },
+              "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj": {
+                "projectPath": "E:\\Address Clone\\AddressBook_2115001102\\ModalLayer\\ModelLayer.csproj"
               }
             }
           }
@@ -335,6 +429,10 @@
             "FluentValidation.AspNetCore": {
               "target": "Package",
               "version": "[11.3.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[6.0.36, )"
             },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
@@ -367,6 +465,10 @@
             "NLog.Web.AspNetCore": {
               "target": "Package",
               "version": "[5.4.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[9.0.1, )"
             }
           },
           "imports": [

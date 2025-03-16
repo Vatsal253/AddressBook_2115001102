@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddressBook", "AddressBook\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{6F6B75EA-8297-45A4-AFE3-03CC1B0DB4B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModalLayer", "ModalLayer\ModalLayer.csproj", "{7374275E-70F1-446B-9675-59D3F461D4DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayer", "ModalLayer\ModelLayer.csproj", "{7374275E-70F1-446B-9675-59D3F461D4DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayer", "RepositoryLayer\RepositoryLayer.csproj", "{A8552B96-88B2-4296-BD90-C12B7BA86C6C}"
 EndProject
@@ -20,6 +20,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{02EA681E-C
 	ProjectSection(SolutionItems) = preProject
 		Log.txt = Log.txt
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Middleware", "Middleware\Middleware.csproj", "{B26C1D28-F674-4A02-B9B0-574B775C0485}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,6 +45,10 @@ Global
 		{A8552B96-88B2-4296-BD90-C12B7BA86C6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8552B96-88B2-4296-BD90-C12B7BA86C6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8552B96-88B2-4296-BD90-C12B7BA86C6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B26C1D28-F674-4A02-B9B0-574B775C0485}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B26C1D28-F674-4A02-B9B0-574B775C0485}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B26C1D28-F674-4A02-B9B0-574B775C0485}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B26C1D28-F674-4A02-B9B0-574B775C0485}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

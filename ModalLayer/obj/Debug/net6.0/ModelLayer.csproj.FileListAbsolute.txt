@@ -1,0 +1,13 @@
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModelLayer.deps.json
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\bin\Debug\net6.0\ModelLayer.pdb
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.csproj.AssemblyReference.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.GeneratedMSBuildEditorConfig.editorconfig
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfoInputs.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.AssemblyInfo.cs
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.csproj.CoreCompileInputs.cache
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.sourcelink.json
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\refint\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ModelLayer.pdb
+E:\Address Clone\AddressBook_2115001102\ModalLayer\obj\Debug\net6.0\ref\ModelLayer.dll

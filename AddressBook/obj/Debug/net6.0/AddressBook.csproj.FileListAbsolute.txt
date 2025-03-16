@@ -144,10 +144,8 @@ E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\runtimes\wi
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\BusinessLayer.dll
-E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModalLayer.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\RepositoryLayer.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\BusinessLayer.pdb
-E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModalLayer.pdb
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\RepositoryLayer.pdb
 E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\AddressBook.csproj.AssemblyReference.cache
 E:\Address Clone\AddressBook_2115001102\AddressBook\obj\Debug\net6.0\AddressBook.GeneratedMSBuildEditorConfig.editorconfig
@@ -179,3 +177,9 @@ E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\AutoMapper.
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.AspNetCore.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\FluentValidation.DependencyInjectionExtensions.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Newtonsoft.Json.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModelLayer.pdb
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Middleware.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Middleware.pdb

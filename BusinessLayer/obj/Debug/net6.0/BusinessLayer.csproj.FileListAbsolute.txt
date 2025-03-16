@@ -18,10 +18,8 @@ C:\Users\Vatsal Jain\source\repos\AddressBook\BusinessLayer\obj\Debug\net6.0\ref
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\BusinessLayer.deps.json
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\BusinessLayer.dll
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\BusinessLayer.pdb
-E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\ModalLayer.dll
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\RepositoryLayer.dll
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\RepositoryLayer.pdb
-E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\ModalLayer.pdb
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\BusinessLayer.csproj.AssemblyReference.cache
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\BusinessLayer.GeneratedMSBuildEditorConfig.editorconfig
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\BusinessLayer.AssemblyInfoInputs.cache
@@ -33,3 +31,7 @@ E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\BusinessL
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\refint\BusinessLayer.dll
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\BusinessLayer.pdb
 E:\Address Clone\AddressBook_2115001102\BusinessLayer\obj\Debug\net6.0\ref\BusinessLayer.dll
+E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\ModelLayer.pdb
+E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\Middleware.dll
+E:\Address Clone\AddressBook_2115001102\BusinessLayer\bin\Debug\net6.0\Middleware.pdb

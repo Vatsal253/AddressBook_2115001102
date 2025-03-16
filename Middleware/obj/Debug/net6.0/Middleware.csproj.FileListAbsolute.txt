@@ -1,0 +1,16 @@
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.csproj.AssemblyReference.cache
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.GeneratedMSBuildEditorConfig.editorconfig
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.AssemblyInfoInputs.cache
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.AssemblyInfo.cs
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.csproj.CoreCompileInputs.cache
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.sourcelink.json
+E:\Address Clone\AddressBook_2115001102\Middleware\bin\Debug\net6.0\Middleware.deps.json
+E:\Address Clone\AddressBook_2115001102\Middleware\bin\Debug\net6.0\Middleware.dll
+E:\Address Clone\AddressBook_2115001102\Middleware\bin\Debug\net6.0\Middleware.pdb
+E:\Address Clone\AddressBook_2115001102\Middleware\bin\Debug\net6.0\ModelLayer.dll
+E:\Address Clone\AddressBook_2115001102\Middleware\bin\Debug\net6.0\ModelLayer.pdb
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.csproj.Up2Date
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.dll
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\refint\Middleware.dll
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\Middleware.pdb
+E:\Address Clone\AddressBook_2115001102\Middleware\obj\Debug\net6.0\ref\Middleware.dll
