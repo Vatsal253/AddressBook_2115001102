@@ -60,6 +60,7 @@ try
     builder.Services.AddScoped<IUserRL, UserRL>();
     builder.Services.AddScoped<JwtTokenService>();
     builder.Services.AddScoped<EmailService>();
+    builder.Services.AddScoped<ICacheService, CacheService>();
     // Add AutoMapper
     builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
