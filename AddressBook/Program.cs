@@ -1,59 +1,42 @@
-using BusinessLayer.Interfaces;
-using BusinessLayer.Services;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using NLog;
-using NLog.Web;
-using AutoMapper;
+﻿using BusinessLayer.Interface;
+using BusinessLayer.Mapping;
+using BusinessLayer.Service;
+using BusinessLayer.Validator;
 using FluentValidation;
 using FluentValidation.AspNetCore;
-using RepositoryLayer.Context;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using StackExchange.Redis;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
-using ModalLayer.Modal;
+using Microsoft.IdentityModel.Tokens;
+using Middleware.Authenticator;
+using Middleware.Email;
+using Middleware.RabbitMQ;
+using ModelLayer.Model;
+using RepositoryLayer.Context;
 using RepositoryLayer.Interface;
 using RepositoryLayer.Service;
-using BusinessLayer.Interface;
-using BusinessLayer.Service;
-using Middleware.Authenticator;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
+using System.Reflection;
 using System.Text;
-using Middleware.Email;
+using Microsoft.OpenApi.Models;
+using NLog;
+using NLog.Web;
+using BusinessLayer.Interfaces;
+using BusinessLayer.Services;
 
-var logger = LogManager.Setup().LoadConfigurationFromFile("nlog.config").GetCurrentClassLogger();
+var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
+logger.Info("Starting Address Book API...");
+
 try
 {
-    logger.Info("Application is starting...");
-
     var builder = WebApplication.CreateBuilder(args);
-    var configuration = builder.Configuration;
-    // Clear default logging providers and use NLog
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
 
-    // Add services to the container.
-    builder.Services.AddControllers();
-    builder.Services.AddEndpointsApiExplorer();
-    builder.Services.AddSwaggerGen();
+    // ✅ Database Connection
+    var connectionString = builder.Configuration.GetConnectionString("SqlConnection");
+    builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connectionString));
 
-    // Enable CORS
-    builder.Services.AddCors(options =>
-    {
-        options.AddPolicy("AllowAll",
-            builder => builder.AllowAnyOrigin()
-                              .AllowAnyMethod()
-                              .AllowAnyHeader());
-    });
-
-    // Database Context
-    builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-
-    // Add Business Layer Services
+    // ✅ Register Services and Repositories
     builder.Services.AddScoped<IAddressBookBL, AddressBookBL>();
     builder.Services.AddScoped<IAddressBookRL, AddressBookRL>();
     builder.Services.AddScoped<IUserBL, UserBL>();
@@ -61,13 +44,41 @@ try
     builder.Services.AddScoped<JwtTokenService>();
     builder.Services.AddScoped<EmailService>();
     builder.Services.AddScoped<ICacheService, CacheService>();
-    // Add AutoMapper
-    builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
-    // Add FluentValidation
-    builder.Services.AddFluentValidationAutoValidation();
-    builder.Services.AddValidatorsFromAssemblyContaining<AddressBookEntryModel>();
-    builder.Services.AddAutoMapper(typeof(MappingProfile));
+    // ✅ AutoMapper Profiles
+    builder.Services.AddAutoMapper(typeof(AddressBookProfile));
+    builder.Services.AddAutoMapper(typeof(UserMapper));
+
+    // ✅ RabbitMQ Services
+    builder.Services.AddSingleton<RabbitMqService>();
+    builder.Services.AddSingleton<RabbitMqConsumer>();
+    builder.Services.AddHostedService<RabbitMqBackgroundService>();
+
+    // ✅ Configure Redis
+    builder.Services.AddStackExchangeRedisCache(options =>
+    {
+        options.Configuration = builder.Configuration["Redis:ConnectionString"];
+        options.InstanceName = builder.Configuration["Redis:InstanceName"];
+    });
+
+    // ✅ CORS Configuration
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy("AllowAllOrigins",
+            policy => policy.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
+    });
+
+    // ✅ Session Management
+    builder.Services.AddSession(options =>
+    {
+        options.IdleTimeout = TimeSpan.FromMinutes(30);
+        options.Cookie.HttpOnly = true;
+        options.Cookie.IsEssential = true;
+    });
+
+    // ✅ Configure JWT Authentication
     var jwtSettings = builder.Configuration.GetSection("Jwt");
     var jwtKey = jwtSettings["Key"];
 
@@ -94,10 +105,63 @@ try
             };
         });
 
+    // ✅ FluentValidation Configuration
+    builder.Services.AddFluentValidationAutoValidation().AddFluentValidationClientsideAdapters();
+    builder.Services.AddScoped<IValidator<RequestAddressBook>, RequestAddressBookValidator>();
+
+    // ✅ Add Controllers & Swagger
+    builder.Services.AddControllers();
+    builder.Services.AddEndpointsApiExplorer();
+
+    // ✅ Swagger Configuration
+    builder.Services.AddSwaggerGen(options =>
+    {
+        options.SwaggerDoc("v1", new OpenApiInfo
+        {
+            Title = "Address Book API",
+            Version = "v1",
+            Description = "An API for managing address book contacts with authentication and RabbitMQ integration",
+            Contact = new OpenApiContact
+            {
+                Name = "Vatsal Jain",
+                Email = "vatsaljain020503@gmail.com"
+            }
+        });
+
+        // ✅ Enable JWT Authentication in Swagger UI
+        options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+        {
+            Description = "Enter 'Bearer {token}'",
+            Name = "Authorization",
+            In = ParameterLocation.Header,
+            Type = SecuritySchemeType.ApiKey,
+            Scheme = "Bearer"
+        });
+
+        options.AddSecurityRequirement(new OpenApiSecurityRequirement
+        {
+            {
+                new OpenApiSecurityScheme
+                {
+                    Reference = new OpenApiReference
+                    {
+                        Type = ReferenceType.SecurityScheme,
+                        Id = "Bearer"
+                    }
+                },
+                Array.Empty<string>()
+            }
+        });
+
+        // ✅ Add XML Comments for API Documentation
+        var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    });
+
     var app = builder.Build();
 
-    // Configure the HTTP request pipeline.
-    if (app.Environment.IsDevelopment())
+    // ✅ Ensure Swagger is available in development & production
+    if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
     {
         app.UseSwagger();
         app.UseSwaggerUI();
@@ -105,19 +169,27 @@ try
 
     app.UseHttpsRedirection();
 
-    // Use CORS policy
-    app.UseCors("AllowAll");
+    app.UseCors("AllowAllOrigins");
+    app.UseSession();
+    app.UseAuthentication();
 
     app.UseAuthorization();
-    app.MapControllers();
+
+    app.UseRouting();
+    app.UseEndpoints(endpoints =>
+    {
+        endpoints.MapControllers();  // 🚨 This must exist!
+    });
+
+
     app.Run();
 }
 catch (Exception ex)
 {
-    logger.Error(ex, "Application startup failed.");
+    logger.Error(ex, "Application startup failed");
     throw;
 }
 finally
 {
-    LogManager.Shutdown();
+    NLog.LogManager.Shutdown();
 }
