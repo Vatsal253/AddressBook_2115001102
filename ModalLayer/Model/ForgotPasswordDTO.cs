@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ModalLayer.Modal
+namespace ModelLayer.Model
 {
-   public class UserLogin
+    public class ForgotPasswordDTO
     {
         public string? Email { get; set; }
-        public string? Password { get; set; }
     }
 }

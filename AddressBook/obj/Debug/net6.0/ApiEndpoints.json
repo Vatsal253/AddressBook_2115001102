@@ -1,71 +1,54 @@
 [
   {
-    "ContainingType": "AddressBookController",
+    "ContainingType": "AddressBook.Controllers.AddressBookController",
     "Method": "GetAllContacts",
-    "RelativePath": "api/AddressBook",
+    "RelativePath": "api/addressbook",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "ModelLayer.Model.ResponseBody\u00601[[System.Collections.Generic.IEnumerable\u00601[[ModelLayer.Model.ResponseAddressBook, ModelLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
-    "ContainingType": "AddressBookController",
+    "ContainingType": "AddressBook.Controllers.AddressBookController",
     "Method": "AddContact",
-    "RelativePath": "api/AddressBook",
+    "RelativePath": "api/addressbook/add",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "ModalLayer.Modal.RequestModel",
+        "Name": "dto",
+        "Type": "ModelLayer.Model.RequestAddressBook",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AddressBookController",
-    "Method": "GetContactById",
-    "RelativePath": "api/AddressBook/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+    "ReturnTypes": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "ModelLayer.Model.ResponseBody\u00601[[ModelLayer.Model.ResponseAddressBook, ModelLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
-    "ContainingType": "AddressBookController",
-    "Method": "UpdateContact",
-    "RelativePath": "api/AddressBook/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "ModalLayer.Modal.RequestModel",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AddressBookController",
+    "ContainingType": "AddressBook.Controllers.AddressBookController",
     "Method": "DeleteContact",
-    "RelativePath": "api/AddressBook/{id}",
+    "RelativePath": "api/addressbook/delete/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -76,7 +59,74 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "ModelLayer.Model.ResponseBody\u00601[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AddressBook.Controllers.AddressBookController",
+    "Method": "GetContactById",
+    "RelativePath": "api/addressbook/get/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ModelLayer.Model.ResponseBody\u00601[[ModelLayer.Model.ResponseAddressBook, ModelLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "AddressBook.Controllers.AddressBookController",
+    "Method": "UpdateContact",
+    "RelativePath": "api/addressbook/update/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "dto",
+        "Type": "ModelLayer.Model.RequestAddressBook",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "ModelLayer.Model.ResponseBody\u00601[[ModelLayer.Model.ResponseAddressBook, ModelLayer, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "AddressBook.Controllers.AuthController",
@@ -88,7 +138,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ModelLayer.Model.ForgetPasswordModel",
+        "Type": "ModelLayer.Model.ForgotPasswordDTO",
         "IsRequired": true
       }
     ],
@@ -104,7 +154,7 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ModalLayer.Modal.UserLogin",
+        "Type": "ModelLayer.Model.LoginUserDTO",
         "IsRequired": true
       }
     ],
@@ -120,24 +170,8 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ModelLayer.Model.RegisterUser",
+        "Type": "ModelLayer.Model.RegisterUserDTO",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AddressBook.Controllers.AuthController",
-    "Method": "ResetPasswordForm",
-    "RelativePath": "api/Auth/reset-password",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "token",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -152,29 +186,8 @@
     "Parameters": [
       {
         "Name": "request",
-        "Type": "ModelLayer.Model.ResetPassword",
+        "Type": "ModelLayer.Model.ResetPasswordDTO",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "AddressBook.Controllers.AuthController",
-    "Method": "ResetPasswordForm",
-    "RelativePath": "api/Auth/reset-password-form",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "token",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "newPassword",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []

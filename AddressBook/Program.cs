@@ -20,8 +20,8 @@ using System.Text;
 using Microsoft.OpenApi.Models;
 using NLog;
 using NLog.Web;
-using BusinessLayer.Interfaces;
-using BusinessLayer.Services;
+using BusinessLayer.Interface;
+using BusinessLayer.Service;
 
 var logger = NLog.LogManager.Setup().LoadConfigurationFromAppSettings().GetCurrentClassLogger();
 logger.Info("Starting Address Book API...");
@@ -154,8 +154,8 @@ try
         });
 
         // ✅ Add XML Comments for API Documentation
-        var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+      //  var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+        //options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
     });
 
     var app = builder.Build();

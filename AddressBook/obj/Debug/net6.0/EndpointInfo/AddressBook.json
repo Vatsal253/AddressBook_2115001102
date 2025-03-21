@@ -1,52 +1,45 @@
 {
   "openapi": "3.0.1",
   "info": {
-    "title": "AddressBook",
-    "version": "1.0"
+    "title": "Address Book API",
+    "description": "An API for managing address book contacts with authentication and RabbitMQ integration",
+    "contact": {
+      "name": "Vatsal Jain",
+      "email": "vatsaljain020503@gmail.com"
+    },
+    "version": "v1"
   },
   "paths": {
-    "/api/AddressBook": {
+    "/api/addressbook": {
       "get": {
         "tags": [
           "AddressBook"
         ],
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "AddressBook"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestModel"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestModel"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/RequestModel"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookIEnumerableResponseBody"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookIEnumerableResponseBody"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookIEnumerableResponseBody"
+                }
               }
             }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
     },
-    "/api/AddressBook/{id}": {
+    "/api/addressbook/get/{id}": {
       "get": {
         "tags": [
           "AddressBook"
@@ -64,10 +57,77 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              }
+            }
           }
         }
-      },
+      }
+    },
+    "/api/addressbook/add": {
+      "post": {
+        "tags": [
+          "AddressBook"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestAddressBook"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestAddressBook"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RequestAddressBook"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/addressbook/update/{id}": {
       "put": {
         "tags": [
           "AddressBook"
@@ -87,27 +147,46 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RequestModel"
+                "$ref": "#/components/schemas/RequestAddressBook"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RequestModel"
+                "$ref": "#/components/schemas/RequestAddressBook"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RequestModel"
+                "$ref": "#/components/schemas/RequestAddressBook"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddressBookResponseBody"
+                }
+              }
+            }
           }
         }
-      },
+      }
+    },
+    "/api/addressbook/delete/{id}": {
       "delete": {
         "tags": [
           "AddressBook"
@@ -125,7 +204,24 @@
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringResponseBody"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringResponseBody"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/StringResponseBody"
+                }
+              }
+            }
           }
         }
       }
@@ -139,17 +235,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUser"
+                "$ref": "#/components/schemas/RegisterUserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUser"
+                "$ref": "#/components/schemas/RegisterUserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterUser"
+                "$ref": "#/components/schemas/RegisterUserDTO"
               }
             }
           }
@@ -170,17 +266,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserLogin"
+                "$ref": "#/components/schemas/LoginUserDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/UserLogin"
+                "$ref": "#/components/schemas/LoginUserDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/UserLogin"
+                "$ref": "#/components/schemas/LoginUserDTO"
               }
             }
           }
@@ -201,17 +297,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgetPasswordModel"
+                "$ref": "#/components/schemas/ForgotPasswordDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgetPasswordModel"
+                "$ref": "#/components/schemas/ForgotPasswordDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ForgetPasswordModel"
+                "$ref": "#/components/schemas/ForgotPasswordDTO"
               }
             }
           }
@@ -224,25 +320,6 @@
       }
     },
     "/api/Auth/reset-password": {
-      "get": {
-        "tags": [
-          "Auth"
-        ],
-        "parameters": [
-          {
-            "name": "token",
-            "in": "query",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
       "post": {
         "tags": [
           "Auth"
@@ -251,54 +328,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPassword"
+                "$ref": "#/components/schemas/ResetPasswordDTO"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPassword"
+                "$ref": "#/components/schemas/ResetPasswordDTO"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ResetPassword"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Auth/reset-password-form": {
-      "post": {
-        "tags": [
-          "Auth"
-        ],
-        "requestBody": {
-          "content": {
-            "multipart/form-data": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "token": {
-                    "type": "string"
-                  },
-                  "newPassword": {
-                    "type": "string"
-                  }
-                }
-              },
-              "encoding": {
-                "token": {
-                  "style": "form"
-                },
-                "newPassword": {
-                  "style": "form"
-                }
+                "$ref": "#/components/schemas/ResetPasswordDTO"
               }
             }
           }
@@ -313,7 +353,7 @@
   },
   "components": {
     "schemas": {
-      "ForgetPasswordModel": {
+      "ForgotPasswordDTO": {
         "type": "object",
         "properties": {
           "email": {
@@ -323,7 +363,21 @@
         },
         "additionalProperties": false
       },
-      "RegisterUser": {
+      "LoginUserDTO": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterUserDTO": {
         "type": "object",
         "properties": {
           "fullName": {
@@ -341,28 +395,23 @@
         },
         "additionalProperties": false
       },
-      "RequestModel": {
-        "required": [
-          "name",
-          "phoneNumber"
-        ],
+      "RequestAddressBook": {
         "type": "object",
         "properties": {
+          "userId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "name": {
-            "maxLength": 100,
-            "minLength": 1,
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "phoneNumber": {
-            "maxLength": 15,
-            "minLength": 1,
-            "pattern": "^[0-9]{10}$",
-            "type": "string"
+            "type": "string",
+            "nullable": true
           },
           "email": {
-            "maxLength": 255,
             "type": "string",
-            "format": "email",
             "nullable": true
           },
           "address": {
@@ -372,7 +421,7 @@
         },
         "additionalProperties": false
       },
-      "ResetPassword": {
+      "ResetPasswordDTO": {
         "type": "object",
         "properties": {
           "token": {
@@ -386,20 +435,98 @@
         },
         "additionalProperties": false
       },
-      "UserLogin": {
+      "ResponseAddressBook": {
         "type": "object",
         "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
           "email": {
             "type": "string",
             "nullable": true
           },
-          "password": {
+          "phoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseAddressBookIEnumerableResponseBody": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResponseAddressBook"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ResponseAddressBookResponseBody": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ResponseAddressBook"
+          }
+        },
+        "additionalProperties": false
+      },
+      "StringResponseBody": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Enter 'Bearer {token}'",
+        "name": "Authorization",
+        "in": "header"
+      }
     }
-  }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
 }

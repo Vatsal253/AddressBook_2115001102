@@ -2,8 +2,8 @@
 using BusinessLayer.Interface;
 using Middleware.Authenticator;
 using Middleware.Email;
+using Middleware.RabbitMQ;
 using Middleware.Salting;
-using ModalLayer.Modal;
 using ModelLayer.Model;
 using RepositoryLayer.Entity;
 using RepositoryLayer.Interface;
@@ -23,16 +23,17 @@ namespace BusinessLayer.Service
         private readonly JwtTokenService _jwtTokenService;
         private readonly IMapper _mapper;
         private readonly EmailService _emailService;
-
-        public UserBL(IUserRL userRepository, JwtTokenService jwtTokenService, IMapper mapper, EmailService emailService)
+        private readonly RabbitMqService _rabbitMqPublisher;
+        public UserBL(IUserRL userRepository, JwtTokenService jwtTokenService, IMapper mapper, EmailService emailService, RabbitMqService rabbitMqPublisher)
         {
             _userRepository = userRepository;
             _jwtTokenService = jwtTokenService;
             _mapper = mapper;
             _emailService = emailService;
+            _rabbitMqPublisher = rabbitMqPublisher;
         }
 
-        public bool RegisterUser(RegisterUser request)
+        public bool RegisterUser(RegisterUserDTO request)
         {
             try
             {
@@ -42,10 +43,15 @@ namespace BusinessLayer.Service
                     return false; // User already exists
 
                 // Map DTO to Entity
-                var user = _mapper.Map<UserEntity>(request);
+                var user = _mapper.Map<User>(request);
                 user.PasswordHash = PasswordHelper.HashPassword(request.Password);
 
                 _userRepository.AddUser(user);
+
+                // Publish event to RabbitMQ
+                string message = $"User Registered: {user.Email}";
+                _rabbitMqPublisher.PublishMessage(message);
+
                 return true;
             }
             catch (Exception ex)
@@ -55,7 +61,7 @@ namespace BusinessLayer.Service
             }
         }
 
-        public string? LoginUser(UserLogin request)
+        public string? LoginUser(LoginUserDTO request)
         {
             try
             {

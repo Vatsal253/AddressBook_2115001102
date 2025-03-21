@@ -11,7 +11,7 @@ using RepositoryLayer.Context;
 namespace RepositoryLayer.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250312110624_InitialMigration")]
+    [Migration("20250321124924_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -58,7 +58,7 @@ namespace RepositoryLayer.Migrations
                     b.ToTable("AddressBookEntries");
                 });
 
-            modelBuilder.Entity("RepositoryLayer.Entity.UserEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entity.User", b =>
                 {
                     b.Property<int>("UserId")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace RepositoryLayer.Migrations
 
             modelBuilder.Entity("RepositoryLayer.Entity.AddressBookEntry", b =>
                 {
-                    b.HasOne("RepositoryLayer.Entity.UserEntity", "User")
+                    b.HasOne("RepositoryLayer.Entity.User", "User")
                         .WithMany("AddressBookEntries")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -96,7 +96,7 @@ namespace RepositoryLayer.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("RepositoryLayer.Entity.UserEntity", b =>
+            modelBuilder.Entity("RepositoryLayer.Entity.User", b =>
                 {
                     b.Navigation("AddressBookEntries");
                 });

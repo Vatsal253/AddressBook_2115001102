@@ -183,3 +183,8 @@ E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModelLayer.
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\ModelLayer.pdb
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Middleware.dll
 E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Middleware.pdb
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\Pipelines.Sockets.Unofficial.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\RabbitMQ.Client.dll
+E:\Address Clone\AddressBook_2115001102\AddressBook\bin\Debug\net6.0\StackExchange.Redis.dll

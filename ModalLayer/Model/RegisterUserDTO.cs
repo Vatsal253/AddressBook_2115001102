@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Model
 {
-    public class RegisterUser
+    public class RegisterUserDTO
     {
         public string? FullName { get; set; }
         public string? Email { get; set; }

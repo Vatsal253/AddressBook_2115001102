@@ -1,15 +1,19 @@
-﻿using ModalLayer.Modal;
+﻿using ModelLayer.Model;
+using RepositoryLayer.Entity;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
-namespace BusinessLayer.Interfaces
+namespace BusinessLayer.Interface
 {
     public interface IAddressBookBL
     {
-        Task<IEnumerable<AddressBookEntryModel>> GetAllContactsAsync();
-        Task<AddressBookEntryModel> GetContactByIdAsync(int id);
-        Task<AddressBookEntryModel> AddContactAsync(RequestModel request);
-        Task<AddressBookEntryModel> UpdateContactAsync(int id, RequestModel request);
-        Task<bool> DeleteContactAsync(int id);
+        IEnumerable<ResponseAddressBook> GetAllContacts();
+        ResponseAddressBook GetContactById(int id);
+        ResponseAddressBook AddContact(RequestAddressBook contact);
+        ResponseAddressBook UpdateContact(int id, RequestAddressBook contact);
+        bool DeleteContact(int id);
     }
 }

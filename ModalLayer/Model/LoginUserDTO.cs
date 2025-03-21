@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Model
 {
-   public class ForgetPasswordModel
+    public class LoginUserDTO
     {
         public string? Email { get; set; }
+        public string? Password { get; set; }
     }
 }

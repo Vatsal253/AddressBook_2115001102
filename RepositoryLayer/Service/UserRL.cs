@@ -19,7 +19,7 @@ namespace RepositoryLayer.Service
             _context = context;
         }
 
-        public UserEntity? GetUserByEmail(string email)
+        public User? GetUserByEmail(string email)
         {
             try
             {
@@ -32,7 +32,7 @@ namespace RepositoryLayer.Service
             }
         }
 
-        public void AddUser(UserEntity user)
+        public void AddUser(User user)
         {
             try
             {
@@ -44,7 +44,8 @@ namespace RepositoryLayer.Service
                 Console.WriteLine($"[AddUser] Error: {ex.Message}");
             }
         }
-        public void UpdateUser(UserEntity user)
+
+        public void UpdateUser(User user)
         {
             _context.Users.Update(user);
             _context.SaveChanges();

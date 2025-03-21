@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace ModelLayer.Model
 {
-    public class ResetPassword
+    public class ResponseBody<T>
     {
-        public string? Token { get; set; }
-        public string? NewPassword { get; set; }
+        public bool Success { get; set; }
+        public string? Message { get; set; }
+        public T Data { get; set; }
     }
 }

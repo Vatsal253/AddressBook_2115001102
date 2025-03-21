@@ -9,8 +9,9 @@ namespace RepositoryLayer.Interface
 {
     public interface IUserRL
     {
-        public UserEntity? GetUserByEmail(string email);
-        public void AddUser(UserEntity user);
-        public void UpdateUser(UserEntity user);
+        User? GetUserByEmail(string email);
+        void AddUser(User user);
+
+        void UpdateUser(User user);
     }
 }

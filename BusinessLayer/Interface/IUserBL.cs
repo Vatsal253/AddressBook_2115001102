@@ -1,5 +1,4 @@
-﻿using ModalLayer.Modal;
-using ModelLayer.Model;
+﻿using ModelLayer.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +9,9 @@ namespace BusinessLayer.Interface
 {
     public interface IUserBL
     {
-        bool RegisterUser(RegisterUser request);
-        string? LoginUser(UserLogin request);
-        public bool ResetPassword(string token, string newPassword);
-        public bool ForgotPassword(string email);
+        bool RegisterUser(RegisterUserDTO request);
+        string? LoginUser(LoginUserDTO request);
+        bool ForgotPassword(string email);
+        bool ResetPassword(string token, string newPassword);
     }
 }
